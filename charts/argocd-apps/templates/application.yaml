@@ -5,7 +5,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: {{ $.Values.project.name }}-{{ $app.name }}
-  namespace: {{ $.Values.project.namespace }}
+  namespace: {{ $.Values.project.namespace | default "argocd" }}
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
@@ -16,13 +16,14 @@ spec:
     path: charts/apps/{{ $app.chart }}
     helm:
       valueFiles:
-        - environments/{{ .Values.project.env }}/configs/{{ $app.config }}
+        - environments/{{ $.Values.project.env }}/configs/{{ $app.config }}
   destination:
     name: {{ $.Values.project.cluster}}
     namespace: {{ $app.namespace }}
   syncPolicy:
     automated:
       selfHeal: true
-
+      
+---
 {{- end -}}
 {{- end -}}
