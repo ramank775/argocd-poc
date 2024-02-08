@@ -1,0 +1,8 @@
+apiVersion: v2
+name: argocd
+version: 1.0.0
+description: Declarative setup for ArgoCD
+dependencies:
+  - name: argo-cd
+    version: 5.50.0
+    repository: https://raw.githubusercontent.com/argoproj/argo-helm/gh-pages

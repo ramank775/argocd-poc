@@ -1,0 +1,26 @@
+{{- range $app := .Values.apps -}}
+{{- if $app.enabled -}}
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ $app.name }}
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: {{ .Values.repo.url }}
+    targetRevision: {{ .Values.repo.branch }}
+    path: 'charts/apps/{{ $app.chart }}'
+    helm:
+      valueFiles:
+        - environments/{{ .Values.project.env }}/configs/{{ $app.config }}
+  destination:
+    name: {{ .Values.project.cluster}}
+    namespace: {{ $app.namespace }}
+  syncPolicy:
+    automated:
+      selfHeal: true
+---
+{{- end -}}
