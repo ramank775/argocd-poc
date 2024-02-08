@@ -1,15 +1,20 @@
-config:
-  clusterCredentials:
-    - name: dev-cluster
-      server: https://dev-cluster.k8s.local
-      config:
-        username: dev
-    - name: staging-cluster
-      server: https://staging-cluster.k8s.local
-      config:
-        username: staging
-  
-  repository:
-    private-repo:
-      name: private-repo
-      url: https://github.com/ramank775/gitops-poc.git
+argo-cd:
+  configs:
+    clusterCredentials:
+      - name: dev-cluster
+        server: https://dev-cluster.k8s.local
+        config:
+          username: dev
+      - name: staging-cluster
+        server: https://staging-cluster.k8s.local
+        config:
+          username: staging
+    
+    repository:
+      private-repo:
+        name: private-repo
+        url: https://github.com/ramank775/gitops-poc.git
+
+  server:
+    service:
+      type: LoadBalancer
