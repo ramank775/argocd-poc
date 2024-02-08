@@ -4,23 +4,24 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: {{ $app.name }}
+  name: {{ $.Values.project.name }}-{{ $app.name }}
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
-  project: default
+  project: {{ $.Values.project.name }}
   source:
-    repoURL: {{ .Values.repo.url }}
-    targetRevision: {{ .Values.repo.branch }}
-    path: 'charts/apps/{{ $app.chart }}'
+    repoURL: {{ $.Values.repo.url }}
+    targetRevision: {{ $.Values.repo.branch }}
+    path: charts/apps/{{ $app.chart }}
     helm:
       valueFiles:
         - environments/{{ .Values.project.env }}/configs/{{ $app.config }}
   destination:
-    name: {{ .Values.project.cluster}}
+    name: {{ $.Values.project.cluster}}
     namespace: {{ $app.namespace }}
   syncPolicy:
     automated:
       selfHeal: true
----
+
+{{- end -}}
 {{- end -}}

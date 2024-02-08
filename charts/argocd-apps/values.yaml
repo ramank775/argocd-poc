@@ -7,7 +7,4 @@ repo:
   url: https://github.com/ramank775/gitops-poc.git
   branch: main
 
-apps:
-  - name: test-app
-    chart: test-app
-    config: test-app.yaml
+apps: []

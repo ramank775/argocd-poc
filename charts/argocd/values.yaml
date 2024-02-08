@@ -2,11 +2,11 @@ argo-cd:
   configs:
     clusterCredentials:
       - name: dev-cluster
-        server: https://dev-cluster.k8s.local
+        server: https://dev-cluster.k8s.local:6443
         config:
           username: dev
       - name: staging-cluster
-        server: https://staging-cluster.k8s.local
+        server: https://staging-cluster.k8s.local:6443
         config:
           username: staging
     
