@@ -1,3 +1,5 @@
+createNamespace: true
+namespace: web
 replicaCount: 1
 image:
   repository: nginx
