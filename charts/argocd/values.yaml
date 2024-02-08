@@ -10,7 +10,7 @@ argo-cd:
         config:
           username: staging
     
-    repository:
+    repositories:
       private-repo:
         name: private-repo
         url: https://github.com/ramank775/gitops-poc.git
