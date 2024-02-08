@@ -7,6 +7,8 @@ metadata:
     - resources-finalizer.argocd.argoproj.io
 spec:
     description: "This project contains applications for the {{ .Values.project.name }} environment"
+    sourceNamespaces:
+      - {{ .Values.project.namespace }}
     sourceRepos:
       - {{ .Values.repo.url }}
     destinations:
