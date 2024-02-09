@@ -1,11 +1,11 @@
-{{- if $instance := .Values.enviroments -}}
+{{- range $instance := .Values.enviroments -}}
 {{- if $instance.enabled -}}
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: {{ $instance.name }}-enviroment
-  namespace: {{ $instance.namespace }}
+  namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
@@ -21,5 +21,5 @@ spec:
       targetRevision: {{ $instance.targetRevision }}
       ref: values
 ---
-{{-end-}}
-{{-end-}}
+{{- end -}}
+{{- end -}}

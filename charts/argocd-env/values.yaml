@@ -1,4 +1,4 @@
-repoUrl: https://github.com/ramank775/gitops-poc.git
+repoURL: https://github.com/ramank775/gitops-poc.git
 
 enviroments:
   # - name: dev-apps
