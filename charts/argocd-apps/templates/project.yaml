@@ -6,14 +6,26 @@ metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
-    description: "This project contains applications for the {{ .Values.project.name }} environment"
-    sourceNamespaces:
-      - "*"
-    sourceRepos:
-      - {{ .Values.repo.url }}
-    destinations:
-      - server: https://kubernetes.default.svc 
-        namespace: "*"
-    orphanedResources: 
-      warn: true
-    
+  description: "This project contains applications for the {{ .Values.project.name }} environment"
+  sourceNamespaces:
+    - "*"
+  sourceRepos:
+    - {{ .Values.repo.url }}
+  destinations:
+    - server: https://kubernetes.default.svc 
+      namespace: "*"
+    - server: {{ .Values.project.cluster }}
+      namespace: "*"
+  orphanedResources: 
+    warn: false
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: Namespace
+  namespaceResourceWhitelist:
+  {{- range $app := .Values.apps -}}
+  {{- if $app.enabled and $app.namespace }}
+    - group: '*'
+      kind: '*'
+      namespace: {{ $app.namespace }}
+  {{- end }}
+  {{- end }}
