@@ -6,13 +6,16 @@ metadata:
     - resources-finalizer.argocd.argoproj.io
 spec:
   project: {{ .Values.project.name }}
-  source:
-    repoURL: {{ .Values.repo.url }}
-    targetRevision: {{ .Values.repo.branch }}
-    path: charts/argocd-apps
-    helm:
-      valueFiles:
-        - environments/{{ .Values.project.env }}/services/values.yaml
+  sources:
+    - repoURL: {{ .Values.repo.url }}
+      targetRevision: {{ .Values.repo.branch }}
+      ref: values
+    - repoURL: {{ .Values.repo.url }}
+      targetRevision: {{ .Values.repo.branch }}
+      path: charts/argocd-apps
+      helm:
+        valueFiles:
+          - $values/environments/{{ .Values.project.env }}/services/values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: {{ .Values.project.namespace | default "argocd" }}
