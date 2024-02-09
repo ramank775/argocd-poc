@@ -11,9 +11,11 @@ repo:
 apps:
   - name: web
     enabled: true
+    namespace: dev-web
     chart: web
     config: web.yaml
   - name: backend
     enabled: true
+    namespace: dev-backend
     chart: backend
     config: backend.yaml

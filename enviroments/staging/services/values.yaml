@@ -12,8 +12,10 @@ apps:
   - name: web
     enabled: true
     chart: web
+    namespace: staging-web
     config: web.yaml
   - name: backend
     enabled: true
     chart: backend
+    namespace: staging-backend
     config: backend.yaml

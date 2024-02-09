@@ -19,7 +19,7 @@ spec:
         - environments/{{ $.Values.project.env }}/configs/{{ $app.config }}
   destination:
     name: {{ $.Values.project.cluster}}
-    namespace: {{ $app.namespace }}
+    namespace: {{ $app.namespace | default $.Values.project.namespace | default "default" }}
   syncPolicy:
     automated:
       selfHeal: true
