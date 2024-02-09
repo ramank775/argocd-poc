@@ -1,6 +1,6 @@
 project:
   name: staging-apps
-  cluster: staging-cluster
+  cluster: in-cluster
   namespace: argocd
   env: staging
 
