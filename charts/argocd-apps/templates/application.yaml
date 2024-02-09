@@ -12,6 +12,8 @@ spec:
   project: {{ $.Values.project.name }}
   source:
     repoURL: {{ $.Values.repo.url }}
+    type: git
+    path: .
     targetRevision: {{ $.Values.repo.branch }}
     chart: charts/apps/{{ $app.chart }}
     helm:
