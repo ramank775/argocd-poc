@@ -22,10 +22,5 @@ spec:
     - group: '*'
       kind: Namespace
   namespaceResourceWhitelist:
-  {{- range $app := .Values.apps -}}
-  {{- if $app.enabled and $app.namespace }}
     - group: '*'
       kind: '*'
-      namespace: {{ $app.namespace }}
-  {{- end }}
-  {{- end }}
