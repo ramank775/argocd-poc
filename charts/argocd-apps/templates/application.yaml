@@ -10,15 +10,16 @@ metadata:
     - resources-finalizer.argocd.argoproj.io
 spec:
   project: {{ $.Values.project.name }}
-  source:
-    repoURL: {{ $.Values.repo.url }}
-    type: git
-    path: .
-    targetRevision: {{ $.Values.repo.branch }}
-    chart: charts/apps/{{ $app.chart }}
-    helm:
-      valueFiles:
-        - environments/{{ $.Values.project.env }}/configs/{{ $app.config }}
+  sources:
+    - repoURL: {{ $.Values.repo.url }}
+      targetRevision: {{ $.Values.repo.branch }}
+      path: charts/apps/{{ $app.chart }}
+      helm:
+        valueFiles:
+          - `$values/environments/{{ $.Values.project.env }}/configs/{{ $app.config }}`
+    - repoURL: {{ $.Values.repo.url }}
+      targetRevision: {{ $.Values.repo.branch }}
+      ref: values
   destination:
     name: {{ $.Values.project.cluster}}
     namespace: {{ $app.namespace | default $.Values.project.namespace | default "default" }}
