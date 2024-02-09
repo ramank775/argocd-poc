@@ -6,3 +6,8 @@ enviroments:
     namespace: dev
     env: dev
     targetRevision: dev
+  - name: staging-apps
+    enabled: true
+    namespace: staging
+    env: staging
+    targetRevision: staging
