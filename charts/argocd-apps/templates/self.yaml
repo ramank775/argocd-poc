@@ -12,7 +12,7 @@ spec:
       path: charts/argocd-apps
       helm:
         valueFiles:
-          - `$values/environments/{{ .Values.project.env }}/services/values.yaml`
+          - `$values/enviroments/{{ .Values.project.env }}/services/values.yaml`
     - repoURL: {{ .Values.repo.url }}
       targetRevision: {{ .Values.repo.branch }}
       ref: values

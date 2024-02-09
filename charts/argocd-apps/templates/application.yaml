@@ -16,7 +16,7 @@ spec:
       path: charts/apps/{{ $app.chart }}
       helm:
         valueFiles:
-          - `$values/environments/{{ $.Values.project.env }}/configs/{{ $app.config }}`
+          - $values/enviroments/{{ $.Values.project.env }}/configs/{{ $app.config }}
     - repoURL: {{ $.Values.repo.url }}
       targetRevision: {{ $.Values.repo.branch }}
       ref: values
