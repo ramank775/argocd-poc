@@ -1,7 +1,7 @@
 project:
   name: dev-apps
   cluster: in-cluster
-  namespace: argocd
+  namespace: dev
   env: dev
 
 repo:
