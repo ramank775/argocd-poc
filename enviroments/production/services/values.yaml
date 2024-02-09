@@ -1,0 +1,21 @@
+project:
+  name: production-apps
+  cluster: in-cluster
+  namespace: argocd
+  env: production
+
+repo:
+  url: https://github.com/ramank775/gitops-poc.git
+  branch: prod
+
+apps:
+  - name: web
+    enabled: true
+    chart: web
+    namespace: staging-web
+    config: web.yaml
+  - name: backend
+    enabled: true
+    chart: backend
+    namespace: staging-backend
+    config: backend.yaml
