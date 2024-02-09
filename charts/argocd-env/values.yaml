@@ -1,0 +1,8 @@
+repoUrl: https://github.com/ramank775/gitops-poc.git
+
+enviroments:
+  # - name: dev-apps
+  #   enabled: true
+  #   namespace: dev
+  #   env: dev
+  #   targetRevision: dev

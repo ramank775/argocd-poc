@@ -1,0 +1,25 @@
+{{- if $instance := .Values.enviroments -}}
+{{- if $instance.enabled -}}
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ $instance.name }}-enviroment
+  namespace: {{ $instance.namespace }}
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  sources:
+    - repoURL: {{ $.Values.repoURL }}
+      path: charts/argocd-apps
+      targetRevision: {{ $instance.targetRevision }}
+      helm:
+        valueFiles:
+          - $values/enviroments/{{ $instance.env }}/services/values.yaml
+    - repoURL: {{ $.Values.repoURL }}
+      targetRevision: {{ $instance.targetRevision }}
+      ref: values
+---
+{{-end-}}
+{{-end-}}

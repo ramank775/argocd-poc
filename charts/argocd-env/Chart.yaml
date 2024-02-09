@@ -1,0 +1,4 @@
+apiVersion: v2
+name: argocd-env
+description: A Helm chart for managing multiple apps enviroments with ArgoCD
+version: 1.0.0
