@@ -5,7 +5,7 @@ project:
   env: dev
 
 repo:
-  url: https://github.com/ramank775/iac-template.git
+  url: https://github.com/ramank775/gitops-poc.git
   branch: dev
 
 apps:
