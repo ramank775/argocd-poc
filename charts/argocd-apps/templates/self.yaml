@@ -23,8 +23,7 @@ spec:
     managedNamespaceMetadata:
       labels:
         app.kubernetes.io/managed-by: argocd
-        app.kubernetes.io/part-of: {{ $.Values.project.name }}
-        app.kubernetes.io/component: {{ $app.name }}
+        app.kubernetes.io/part-of: {{ .Values.project.name }}
     syncOptions:
       - CreateNamespace=true
   
