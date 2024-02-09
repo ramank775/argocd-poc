@@ -6,8 +6,10 @@ enviroments:
     namespace: dev
     env: dev
     targetRevision: dev
+    cluster: in-cluster
   - name: staging-apps
     enabled: true
     namespace: staging
     env: staging
     targetRevision: staging
+    cluster: in-cluster

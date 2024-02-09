@@ -6,3 +6,4 @@ enviroments:
   #   namespace: dev
   #   env: dev
   #   targetRevision: dev
+  #   cluster: in-cluster

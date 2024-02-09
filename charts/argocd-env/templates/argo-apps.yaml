@@ -17,6 +17,13 @@ spec:
       helm:
         valueFiles:
           - $values/enviroments/{{ $instance.env }}/services/values.yaml
+        valueObject:
+          project:
+            name: {{ $instance.name }}
+            namespace: {{ $instance.namespace }}
+            cluster: {{ $instance.cluster }}
+            env: {{ $instance.env }}
+
     - repoURL: {{ $.Values.repoURL }}
       targetRevision: {{ $instance.targetRevision }}
       ref: values
