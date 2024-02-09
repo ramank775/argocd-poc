@@ -17,12 +17,15 @@ spec:
       helm:
         valueFiles:
           - $values/enviroments/{{ $instance.env }}/services/values.yaml
-        valueObject:
-          project:
-            name: {{ $instance.name }}
-            namespace: {{ $instance.namespace }}
-            cluster: {{ $instance.cluster }}
-            env: {{ $instance.env }}
+        parameters:
+          - name: "project.name"
+            value: {{ $instance.name }}
+          - name: "project.namespace"
+            value: {{ $instance.namespace }}
+          - name: "project.cluster"
+            value: {{ $instance.cluster }}
+          - name: "project.env"
+            value: {{ $instance.env }}
 
     - repoURL: {{ $.Values.repoURL }}
       targetRevision: {{ $instance.targetRevision }}
