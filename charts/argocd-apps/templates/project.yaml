@@ -12,8 +12,8 @@ spec:
     sourceRepos:
       - {{ .Values.repo.url }}
     destinations:
-      - namespace: argocd
-        server: https://kubernetes.default.svc 
+      - server: https://kubernetes.default.svc 
+        namespace: "*"
     orphanedResources: 
       warn: true
     
